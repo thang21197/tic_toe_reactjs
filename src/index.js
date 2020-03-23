@@ -57,6 +57,7 @@ function Square(props) {
         const history=this.state.history.slice(0,this.state.stepNumber+1);
         const current=history[history.length-1];
         const squares= current.squares.slice();
+        
         if (calculateWinner(squares) || squares[i]) {
             return;
         }
@@ -79,8 +80,7 @@ function Square(props) {
        const history=this.state.history;
        const current=history[this.state.stepNumber];
        const winner=calculateWinner(current.squares);
-       
-       console.log(current);
+
        
        const moves=history.map((step,move)=>{
            const desc = move? 
@@ -123,16 +123,15 @@ function Square(props) {
         [1, 4, 7],
         [2, 5, 8],
         [0, 4, 8],
-        [2, 4, 6],
+        [2, 4, 6]
       ];
-      for (let i = 0; i < squares.length; i++) {
-          const [a,b,c] = lines[i];
-          if(squares[a]&&squares[a]===squares[b]&&squares[a]===squares[c])
-          {
-              return squares[a];
-          }
-          return null;
-      }
+       for (let i = 0; i < lines.length; i++) {
+    const [a, b, c] = lines[i];
+    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+      return squares[a];
+    }
+  }
+      return null;
   }
   // ========================================
   
